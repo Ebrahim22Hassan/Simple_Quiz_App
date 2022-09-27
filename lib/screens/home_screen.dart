@@ -5,7 +5,7 @@ import 'package:quiz_app/widgets/next_button.dart';
 import 'package:quiz_app/widgets/options_card.dart';
 import 'package:quiz_app/widgets/question_widget.dart';
 import 'package:quiz_app/widgets/result_box.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 import '../models/db_connect.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -50,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int score = 0; // Score variable
   bool isPressed = false; // check if the user click any answer
   bool neumorphism = true;
+  final player = AudioPlayer(); // Play sound
 
   /// Function to display the next Question
   bool isAlreadySelected = false;
@@ -180,6 +181,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           checkAnswerAndUpdate(
                               extractedData[index].options.values.toList()[i]);
+                          if (extractedData[index].options.values.toList()[i] ==
+                              true) {
+                            player.play(AssetSource('true.mp3'));
+                          } else {
+                            player.play(AssetSource('false.mp3'));
+                          }
                           setState(() {
                             neumorphism = !neumorphism;
                           });
@@ -191,6 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
               floatingActionButton: GestureDetector(
                 onTap: () {
                   nextQuestion(extractedData.length);
+                  player.play(AssetSource('te.mp3'));
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.0),

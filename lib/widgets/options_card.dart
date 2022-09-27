@@ -16,7 +16,7 @@ class OptionsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //bool neumorphism = true;
-    Offset distance = neumorphism ? Offset(5, -5) : Offset(-4, 4);
+    Offset distance = neumorphism ? const Offset(5, -5) : const Offset(-4, 4);
     double blur = neumorphism ? 5.0 : 30.0;
     return Column(
       children: [
@@ -29,13 +29,13 @@ class OptionsCard extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     offset: -distance,
-                    color: Color(0xffffc412),
+                    color: const Color(0xffffc412),
                     blurRadius: blur,
                     inset: neumorphism,
                   ),
                   BoxShadow(
                     offset: distance,
-                    color: Color(0xff763e06),
+                    color: const Color(0xff763e06),
                     blurRadius: blur,
                     inset: neumorphism,
                   ),
