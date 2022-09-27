@@ -49,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 0; // index to loop through Questions
   int score = 0; // Score variable
   bool isPressed = false; // check if the user click any answer
+  bool neumorphism = true;
 
   /// Function to display the next Question
   bool isAlreadySelected = false;
@@ -67,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           index++;
           isPressed = false;
           isAlreadySelected = false;
+          neumorphism = true;
         });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -100,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
       score = 0;
       isPressed = false;
       isAlreadySelected = false;
+      neumorphism = true;
     });
     Navigator.pop(context);
   }
@@ -172,10 +175,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? correct
                                   : incorrect
                               : cardColor,
+                          neumorphism: neumorphism,
                         ),
                         onTap: () {
                           checkAnswerAndUpdate(
                               extractedData[index].options.values.toList()[i]);
+                          setState(() {
+                            neumorphism = !neumorphism;
+                          });
                         },
                       ),
                   ],
