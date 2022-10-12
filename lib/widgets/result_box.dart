@@ -16,9 +16,14 @@ class ResultBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      actionsAlignment: MainAxisAlignment.center,
       backgroundColor: background,
+      shape: const CircleBorder(
+          side: BorderSide(
+        color: Colors.white,
+      )),
       content: Padding(
-        padding: const EdgeInsets.all(60.0),
+        padding: const EdgeInsets.all(120.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
